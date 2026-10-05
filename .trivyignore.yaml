@@ -1,0 +1,11 @@
+# Trivy findings that are deliberate. Each entry says why.
+misconfigurations:
+  - id: AWS-0178
+    paths:
+      - examples/basic/main.tf
+      - examples/complete/main.tf
+    statement: >-
+      VPC Flow Logs. The module creates no VPC. The examples create one only to
+      show the option set associated with a VPC; it has no subnets, so nothing
+      runs in it and there is no traffic to log. Flow logs would add a log
+      group and an IAM role that have nothing to do with DHCP options.
